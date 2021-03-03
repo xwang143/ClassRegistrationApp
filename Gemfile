@@ -8,6 +8,7 @@ gem 'activerecord-import'
 gem 'json'
 gem "better_errors"
 gem "pry-rails"
+gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
