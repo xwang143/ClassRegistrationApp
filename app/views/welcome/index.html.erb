@@ -1,12 +1,10 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <h2>Welcome to the school info display</h2>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Courses",   courses_path %></li>
-            <li><%= link_to "Instructors",   instructors_path %></li>
-            <li><%= link_to "Subjects", subjects_path%></li>
-          </ul>
-        </nav>
-      </div>
-</header>
+
+<div class="text-center home">
+  <h2>This is a simple course registration website</h2>
+  <br/>
+  <p>
+    Please signup or login to enroll courses or to view the database.
+  <p>
+  <%= link_to "Sign up", signup_path, class: "btn btn-primary" %>
+</div>
+

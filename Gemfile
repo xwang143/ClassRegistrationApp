@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 # Added for this pa
+gem 'bcrypt'
 gem 'activerecord-import'
 gem 'json'
 gem "better_errors"

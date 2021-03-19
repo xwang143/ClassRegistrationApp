@@ -1,0 +1,16 @@
+<nav class="navbar mb-2 navbar-inverse">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+          <li><%= link_to "Courses",   courses_path %></li>
+          <li><%= link_to "Instructors",   instructors_path %></li>
+          <li><%= link_to "Subjects", subjects_path%></li>
+        <li><%= link_to "Log out", logout_path, method: "delete"%></li>
+      <% else %>
+        <li><%= link_to "Sign up", signup_path %></li>
+        <li><%= link_to "Log in", login_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
