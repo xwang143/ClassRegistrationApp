@@ -1,14 +1,51 @@
 <div class="row">
   <div class="offset-4 col-md-4">
-      <h3 class='text-center'>
+      <h3 class='text-left'>
         Welcome!
         <%= @user.name %>
+         <%= @user.email %>
+         
       </h3>
-      <h3 class='text-center'>
-        <%= @user.email %>
-      </h3>
+      
+      
+      <%count=0%>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Courses Enrolled</th>
+            <th scope="col">Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Description</th>
+            <th scope="col">Need to Drop?</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <%@user.courses.each do |course|%>
+            
+            <tr>
+            <% count+= 1%>
+              <th scope="row"><%=count%></th>
+              <td><%=course.name%></td>
+              <td><%=course.code%></td>
+              <td><%=course.description%></td>
+              <td>
+                 <%= form_with(url: drop_path, method: :delete , local: true) do |f| %>
+                <div><%= hidden_field_tag :drop_course_id, course.id %></div>
+                <%= f.submit "Drop", class: "btn btn-danger" %>
+                <% end %>
+              </td>
+            
+            </tr>
+            
+          <%end%>
+          
+        </tbody>
+      </table>
   </div>
 </div>
+
+      
 
 
 

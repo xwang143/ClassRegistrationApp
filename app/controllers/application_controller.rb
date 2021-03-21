@@ -1,4 +1,6 @@
 include SessionsHelper
+include EnrollmentsHelper
+# include DoSearchHelper
 class ApplicationController < ActionController::Base
 end
 

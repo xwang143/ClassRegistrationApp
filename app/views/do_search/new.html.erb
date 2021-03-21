@@ -1,0 +1,24 @@
+<div class="new"> 
+<%= form_with url: display_path, method: :get, local: true, html: { class: "mr-sm-2" } do |form| %>
+    <div class="form-group">   
+        <%= form.label :query, "Type Course Name:" %>
+
+    
+        <%= search_field_tag :search, params[:search], placeholder: "Course Name...", class: 
+        "form-control mr-sm-2" %>  
+        
+
+    </div>
+    <div class="form-group">
+        <%= form.label :query, "Select A Subject:" %>
+        <%=select_tag :subject_id, options_for_select(Subject.all.map{ |subject| 
+            [subject.name, subject.sub_id] }.sort), :include_blank=>true, class: 
+        "form-control mr-sm-2"%>
+    </div>
+    <%= form.submit "Search" %>
+    
+<% end %>
+</div>
+
+
+

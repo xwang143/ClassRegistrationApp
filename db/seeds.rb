@@ -19,7 +19,7 @@ courses = []
 subjects=[]
 categories=[] # the array for join table
 
-id_subId = {}
+# id_subId = {}
 
 # Get path
 path_instructor = Rails.root.join('data', 'instructor.json')
@@ -49,25 +49,40 @@ num = 0
 hash_subject.each do |item|
     num += 1
     subjects << Subject.new(name: item["name"], abbr: item["abbreviation"], sub_id: item["id"])
-    id_subId[item["id"]] = num
+    # id_subId[item["id"]] = num
 end
 
-# do sth to categories
-num = 0
-hash_course.each do |item|
-    num += 1
-    item["subjects"].each do |subject|
-        categories << Category.new(course_id: num, subject_id: id_subId[subject["id"]], sub_id: subject["id"])
-    end
-end
-
-
-
+# # do sth to categories
+# num = 0
+# hash_course.each do |item|
+#     num += 1
+#     item["subjects"].each do |subject|
+#         categories << Category.new(course_id: num, subject_id: id_subId[subject["id"]], sub_id: subject["id"])
+#     end
+# end
 Instructor.import instructors
 Course.import courses
 Subject.import subjects
-Category.import categories
+puts "End loading instructors, courses, subjects"
 
-puts "End loading"
+hash_course.each do |course_item|
+    cur_course_name = course_item["name"]
+    cur_course_id = Course.all.find_by(name: cur_course_name).id
+    course_item["subjects"].each do |sub_item|
+        cur_sub_id = sub_item["id"]
+        # puts cur_sub_id
+        cur_subject = Subject.all.find_by(sub_id: cur_sub_id)
+        unless cur_subject==nil
+            cur_subject_id = Subject.all.find_by(sub_id: cur_sub_id).id
+            categories << Category.new(course_id:cur_course_id, subject_id:cur_subject_id, sub_id:cur_sub_id )
+        end 
+    end
+end 
+
+
+Category.import categories
+puts "End loading categories"
+
+
 
 

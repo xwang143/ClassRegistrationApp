@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-    has_many :items
+    has_many :enrollments
+    has_many :courses, through: :enrollments
+    
     has_secure_password
     before_save { self.email = email.downcase }
     validates :name, presence: true
