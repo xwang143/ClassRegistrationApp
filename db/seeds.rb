@@ -66,8 +66,8 @@ Subject.import subjects
 puts "End loading instructors, courses, subjects"
 
 hash_course.each do |course_item|
-    cur_course_name = course_item["name"]
-    cur_course_id = Course.all.find_by(name: cur_course_name).id
+    cur_course_code = course_item["code"]
+    cur_course_id = Course.all.find_by(code: cur_course_code).id
     course_item["subjects"].each do |sub_item|
         cur_sub_id = sub_item["id"]
         # puts cur_sub_id

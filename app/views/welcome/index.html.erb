@@ -2,9 +2,16 @@
 <div class="text-center home new">
   <h2>This is a simple course registration website</h2>
   <br/>
-  <p>
-    Please signup or login to enroll courses or to view the database.
-  <p>
+  <% unless logged_in?%>
+    <p>
+      Please signup or login to enroll courses or to view the database.
+    <p>
+  <% else %> 
+    <p>
+      Welcome Back!
+    <p>
+  <% end %>
+
   
 
 </div>

@@ -18,7 +18,7 @@ class EnrollmentsController < ApplicationController
         end
         # redirect_to search_path
         # redirect_to URI(request.referer).path
-        redirect_back_or search_path
+        redirect_to search_path
     end 
 
     
